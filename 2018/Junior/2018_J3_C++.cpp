@@ -23,7 +23,7 @@ int main() {
                     sum += distances[k];
                 }
                 distanceTable[i][j] = sum;
-            } else { 
+            } else { //To sum the left side of the vector, you can just flip i and j
                 distanceTable[i][j] = distanceTable[j][i];
             }
         }
