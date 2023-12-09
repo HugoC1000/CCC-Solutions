@@ -10,7 +10,7 @@
 | 2021      |    |      |       |      | Done | Done | Done | Done |      |       |
 | 2020      |    |      |       |      |       | Done |      |       |      |       |
 | 2019      |    |      |       |      |       | Done | Done |      |       |      |
-| 2018      |    |      | Done |      |       | Done | Done |      |       |      |
+| 2018      | Done | Done | Done |      |       | Done | Done |      |       |      |
 | 2017      |    |      |       |      |       |      |       |      |       |      |
 | 2016      | Done |      |       |      |       |      |       |      |       |      |
 | 2015      | Done | Done |       |      |       |      |       |      |       |      |
