@@ -52,7 +52,7 @@ int main() {
     }
     grid = rotate(grid);
   }
-  // print the answer
+  //Print the answer
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
       std::cout << grid[i][j];
