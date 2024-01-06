@@ -12,7 +12,7 @@
 | 2019      |    |      |       |      |       | Done | Done |      |       |      |
 | 2018      | Done | Done | Done |      |       | Done | Done |      |       |      |
 | 2017      |    |      |       |      |       |Done|Done|      |       |      |
-| 2016      | Done |      |       |      |       |      |       |      |       |      |
+| 2016      | Done |      |       |      |       |Done|Done|      |       |      |
 | 2015      | Done | Done |       |      |       |      |       |      |       |      |
 
  
