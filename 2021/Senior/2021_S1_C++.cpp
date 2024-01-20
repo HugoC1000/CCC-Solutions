@@ -1,4 +1,3 @@
-2021S1
 #include <iostream>
 
 
