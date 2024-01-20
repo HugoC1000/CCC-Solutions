@@ -14,7 +14,7 @@ int main(){
     std::cin>> width[i];
   }
 
-  double area = 0;//what data type is proper?
+  double area = 0; //Use double to account for decimal values. 
 
   for (int i = 1; i< N+1;i++){
   //  std::cout << i;
