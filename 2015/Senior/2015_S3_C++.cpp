@@ -24,22 +24,20 @@ int main(){
         cin >> idealGate;
         //cout << "I: " << i << "IdealGate: " << idealGate << endl;
 
-        auto it_lower = available_gates.lower_bound(idealGate); // Find the first element not less than N
-        //cout << "LowerBound: " << *it_lower << endl;
-        
-        if(it_lower== available_gates.begin()&&*it_lower <= idealGate){
+        //if gates lowerbound(0)>plane  ideal gate, meaning not enought gates, break
+        if(*available_gates.lower_bound(0)>idealGate)  break;
+        auto it_lower = available_gates.lower_bound(idealGate);
+
+        if(it_lower == available_gates.begin()&& *it_lower <= idealGate){
             available_gates.erase(*it_lower);
             count++;
-        } else if( *it_lower == idealGate){
+        } else if(*it_lower == idealGate){
             available_gates.erase(*it_lower);
             count++;
-        }else if(it_lower != available_gates.begin()) {
-            --it_lower;
-            available_gates.erase(*it_lower);
-            count++;
-            //std::cout << "Count" << count << endl;{
         }else{
-            break;
+            it_lower--;
+            available_gates.erase(*it_lower);
+            count++;
         }
 
     }
