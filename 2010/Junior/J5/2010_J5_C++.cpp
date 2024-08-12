@@ -1,3 +1,7 @@
+//This question can be solved using BFS or DFS. 
+//Each position the knight can jump to is the knight's neighbor. When using BFS, add each neighbor to the queue. Visit each node and add the neighboring nodes. 
+//Because this is BFS, the first node that is the target is the shortest path. 
+
 #include <iostream>
 #include <vector>
 #include <queue>
