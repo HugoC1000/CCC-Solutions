@@ -1,67 +1,73 @@
-  //there is a U shaped feature
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-  //we might can perform some kind search to find the lowest point on this U shape
+using namespace std;
 
-  //what should we search in, and what are we looking for?
+#define LL long long
 
-  //how do we know that we are at the bottom?
-  #include <iostream>
-  #include <vector>
-  #include <algorithm>
-  #include <cmath>
-  using namespace std;
+struct Student{
+    LL initialPosition;
+    LL speed; // one meter per second
+    LL hearingRange;
+};
+
+LL findSumOfTime(LL concertLocation, vector<Student> Students){
+    LL totalWalkingTime = 0;
+    for(Student student : Students){
+        long long walkingTime = abs(concertLocation - student.initialPosition) - student.hearingRange;
+        if (walkingTime > 0) {
+            totalWalkingTime += walkingTime * student.speed;
+        }
+    }
+    return totalWalkingTime;
+}
+
+int main(){
+    LL N;
+    cin >> N;
+
+    vector<Student> students;
 
 
+    for(int i = 0; i < N; i++){
+        LL temp1;
+        LL temp2;
+        LL temp3;
+        cin >> temp1 >> temp2 >> temp3;
+        Student temp = {temp1, temp2, temp3};
+        students.push_back(temp);
+    }
 
-  long long getWalkingTime(int p, vector<vector<int>> f) {
-      long long out = 0;
-      for (const vector<int>& i : f) {
-          long long walk = abs(p - i[0]) - i[2];
-          if (walk > 0) {
-              out += walk * i[1];
-          }
-      }
-      return out;
-  }
+    LL low = 0;
+    LL high = 1e9;
 
-  int main() {
-      int n;
-      std::cin >> n;
-      vector<vector<int>> f;
-      f.resize(n, vector<int>(3));
-//min starts from 1billion, max start from 0, as from the question input range
-      long long low = 1000000000;
-      long long high = 0;
-      for (long long i = 0; i < n; i++) {
-          cin >> f[i][0] >> f[i][1] >> f[i][2];
-          if (f[i][0] > high) {
-              high = f[i][0];
-          }
-          if (f[i][0] < low) {
-              low = f[i][0];
-          }
-      }
+    LL result = (long long)1e9;
 
-      int mid = 0;
-      long long s = 0;
-      while (low <= high) {
-          mid = (low + high) / 2;
-          s = getWalkingTime(mid,f);
-          long long sLeft = getWalkingTime(mid - 1,f);
-          long long sRight = getWalkingTime(mid + 1,f);
-          if (s < sRight && s < sLeft) {
-              break;
-          }
-          if (s == sRight || s == sLeft) {
-              break;
-          }
-          if (s < sRight) {
-              high = mid - 1;
-          } else if (s < sLeft) {
-              low = mid + 1;
-          }
-      }
+    while (low <= high) {
+        int mid = (low+high)/2;
+        LL sumOfTimeForMid = findSumOfTime(mid, students);
+        LL sumOfTimeForLeftOfMid = findSumOfTime(mid-1, students);
+        LL sumOfTimeForRightOfMid = findSumOfTime(mid+1,students);
+        
+        result = sumOfTimeForMid;
 
-      cout << s << endl;
-      return 0;
-  }
+        if (sumOfTimeForMid < sumOfTimeForRightOfMid && sumOfTimeForMid < sumOfTimeForLeftOfMid) {
+            break;
+        }
+
+        if (sumOfTimeForMid == sumOfTimeForRightOfMid || sumOfTimeForMid == sumOfTimeForLeftOfMid) {
+            break;
+        }
+
+
+        if (sumOfTimeForMid < sumOfTimeForRightOfMid) {
+            high = mid - 1;
+        } else if (sumOfTimeForMid < sumOfTimeForLeftOfMid) {
+            low = mid + 1;
+        }
+    }
+
+    cout << result << endl;
+
+}
