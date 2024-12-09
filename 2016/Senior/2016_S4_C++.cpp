@@ -1,6 +1,6 @@
 /*
 Idea is to use a 2D DP table, with dp[i][j], where i is the starting index of a subarray, and j is the ending index. 
-the DP will store the max riceball size within that subarray. From index 1 to index j. 
+the DP will store the max riceball size within that subarray. From index i to index j. 
 To set this, up first dp[i][i] is going to be riceBalls[i], because the max riceball from index i to index i... is going to be itself. 
 Then we will iterate diagonally. To do this, we iterate through different lengths of the subarray. 
 We will also iterate through different start indexes.
@@ -12,12 +12,12 @@ This will allow us to merge the riceballs.
 If  the start to left index is greater than the right index to the end, that means we can give some riceballs to the right index in an attempt to balance things out. 
 Vice versa for the other side. 
 Once they are equal, they will enter the last else if statement in the code below. 
-There we make sure that the left part(start index to middleSegmentLeft) is not 0. 
+There, we make sure that the left part(start index to middleSegmentLeft) is not 0. 
 Then we add up the max riceball size from the left side, middle segment, and the right side. 
 Note: If we are summing up adjacent riceballs(only two riceballs), the middle segment will = 0, to explain this: 
   If the middle segment's left and right were dp[i][j], we make them effectively dp[j][i]. This will always = 0, as we are only filling the upper part of the diagonal, 
   in the dp array. 
-Because we are not adding every possible combination into the DP(we only add combinations that can be merged), if you print the dp array, you will find most cells are 0. 
+Because we do not add every possible combination to the DP(we only add combinations that can be merged), if you print the DP array, you will find most cells are 0. 
 It is also because we don't fill all cells in, that dp[0][N] meaning maxriceBallSize from index 0 to index N won't give us the answer(it will prob be 0). 
 Thus we have to loop over the entire dp array, and get the max value. 
 */
